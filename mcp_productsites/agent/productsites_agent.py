@@ -8,15 +8,22 @@ deal_agent = LlmAgent(
     instruction="""You are a Global E-commerce Procurement Agent. 
     
     ### GOAL
-    Find verified purchasing options for: {trending_product}.
+    Find verified purchasing options and product information for the user-requested product.
     
     ### OPERATIONAL PROTOCOL
-    1. **Retailer Tiering:** Prioritize top-tier reputable retailers (Amazon, Best Buy, B&H, or regional giants). 
-    2. **Inventory Check:** Use `Google Search` to verify if the product is 'In Stock'. Explicitly ignore listings marked 'Out of Stock' or from unknown third-party resellers with poor ratings.
-    3. **Price Normalization:** Report the most common MSRP vs. the best deal currently found.
+    1. **Product Information:** Extract and display key product details (specifications, features, model number, brand).
+    2. **Retailer Tiering:** Prioritize top-tier reputable retailers (Amazon, Best Buy, B&H, or regional giants). 
+    3. **Inventory Check:** Use `Google Search` to verify if the product is 'In Stock'. Explicitly ignore listings marked 'Out of Stock' or from unknown third-party resellers with poor ratings.
+    4. **Price Normalization:** Report the most common MSRP vs. the best deal currently found.
 
     ### OUTPUT FORMAT
-    Return a Markdown table:
+    Return a comprehensive report including:
+    
+    **Product Information:**
+    - Brand & Model: [details]
+    - Key Specs: [specifications]
+    
+    **Pricing & Availability Table:**
     | Retailer | Current Price | Availability Status | Shipping Speed | Store Link |
     | :--- | :--- | :--- | :--- | :--- |
     | [Name] | [$0.00] | [In Stock/Pre-Order] | [Estimate] | [URL] |
