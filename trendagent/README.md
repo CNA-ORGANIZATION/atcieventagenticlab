@@ -128,7 +128,9 @@ python mcp_productsites_server.py
 
 ### Start the Agent
 
-In a fourth terminal (with activated virtual environment):
+You have two options for running the agent:
+
+#### Option A: Interactive Command-Line Mode
 
 ```bash
 python trend_agent.py
@@ -144,6 +146,87 @@ You should see:
 Type 'quit' to exit
 
 👤 You:
+```
+
+#### Option B: Web UI Mode (Recommended)
+
+For a more user-friendly interface with a web-based UI:
+
+```bash
+adk web
+```
+
+This will:
+1. Start the agent server
+2. Automatically open your browser to `http://localhost:8000`
+3. Provide a beautiful web interface for interacting with the agent
+4. Display real-time responses and conversation history
+
+**Advantages of Web UI Mode:**
+- 🎨 Modern, user-friendly interface
+- 💬 Chat-like conversation experience
+- 📱 Works on any device with a browser
+- 📊 Better visualization of responses
+- 🔄 Session management built-in
+
+**Advantages of Command-Line Mode:**
+- ⚡ Lightweight and fast
+- 🖥️ Direct control from terminal
+- 🔧 Easier for scripting and automation
+
+### Web UI Features
+
+When running with `adk web`, you get a complete web-based interface:
+
+**Chat Interface**
+- Clean, intuitive chat-like design
+- Message history visible in conversation
+- Real-time streaming responses
+- Easy input field for natural language queries
+
+**Response Display**
+- Formatted text with proper line breaks
+- Tables for pricing and retailer information
+- Organized sections (Executive Summary, Specs, etc.)
+- Copy-to-clipboard functionality for responses
+
+**Session Management**
+- Persistent conversation history
+- Clear conversation option
+- Session state management
+- Multi-turn conversations
+
+**Browser Compatibility**
+- Works in Chrome, Firefox, Safari, Edge
+- Responsive design (mobile-friendly)
+- No additional software required
+
+**Accessing the Web UI**
+
+After running `adk web`:
+1. The browser automatically opens to `http://localhost:8000`
+2. If not, manually navigate to that URL
+3. You'll see a beautiful chat interface
+4. Type your queries and press Send or Enter
+5. Watch real-time responses appear in the chat
+
+**Example Web UI Workflow:**
+```
+User Interface:
+┌────────────────────────────────────────┐
+│  🤖 Trending Alert Agent               │
+├────────────────────────────────────────┤
+│ Chat History:                           │
+│                                        │
+│ You: What's trending today?            │
+│ Agent: The most trending product...   │
+│                                        │
+│ You: Where can I buy it?              │
+│ Agent: You can purchase from...        │
+│                                        │
+├────────────────────────────────────────┤
+│ [Message input field...        ] [Send]│
+└────────────────────────────────────────┘
 ```
 
 ## Using the Agent
@@ -235,6 +318,101 @@ To quit the interactive session, type:
 
 Or use: `exit` or `q`
 
+### Web UI Usage Guide
+
+#### Starting the Web UI
+
+```bash
+adk web
+```
+
+Expected output:
+```
+Starting web server...
+🚀 Server running at http://localhost:8000
+📱 Opening browser...
+```
+
+Your default browser will automatically open to the web interface.
+
+#### Web UI Layout
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  Trending Alert Agent                      │
+├─────────────────────────────────────────────────────────────┤
+│  Chat Area                                                  │
+│  ┌───────────────────────────────────────────────────────┐ │
+│  │ You: What's trending today?                      [copy] │
+│  │                                                        │ │
+│  │ Agent: The most trending product today is...     [copy] │
+│  │ • Trend velocity: 450% spike                           │
+│  │ • Primary signals: [sources listed]                    │
+│  │                                                        │ │
+│  │ You: Where can I buy it?                         [copy] │
+│  │                                                        │ │
+│  │ Agent: You can purchase from these retailers:    [copy] │
+│  │ | Retailer | Price | Availability |                   │
+│  │ | Amazon   | $X.XX | In Stock     |                   │
+│  │                                                        │ │
+│  └───────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────┤
+│ Input: [Type your question here...                    [Send]│
+│        [Clear chat]  [Export conversation]                 │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Key Web UI Features
+
+**Message Input**
+- Type naturally in the input field at the bottom
+- Press Enter or click Send to submit
+- Supports multi-line input (Shift+Enter for new line)
+
+**Chat History**
+- All messages and responses are preserved
+- Click "Copy" to copy any message
+- Scroll up to view earlier messages
+- Use "Clear chat" to start fresh conversation
+
+**Response Formatting**
+- Markdown rendering for better readability
+- Tables displayed with proper formatting
+- Code blocks highlighted
+- Links are clickable
+
+**Quick Actions**
+- **Copy**: Copy any message to clipboard
+- **Export**: Download conversation as file
+- **Clear**: Start a new conversation
+- **Settings**: Configure agent behavior (if available)
+
+#### Web UI Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Enter` | Send message |
+| `Shift+Enter` | New line in input |
+| `Ctrl+L` / `Cmd+L` | Clear chat |
+| `Ctrl+A` / `Cmd+A` | Select all (in input) |
+
+#### Accessing from Other Devices
+
+Once `adk web` is running:
+
+**Same Computer (Default)**
+- Open `http://localhost:8000`
+
+**Other Devices on Network**
+- Find your computer's IP address
+- Open `http://[YOUR_IP]:8000` from other device
+- Requires no special configuration
+
+**Sharing the Web UI**
+- Can be accessed by multiple users simultaneously
+- Each user has independent session
+- Share the URL with colleagues or clients
+
 ## Project Structure
 
 ```
@@ -321,6 +499,48 @@ Available models:
 - Activate your virtual environment
 - Run `pip install -r requirements.txt`
 - Verify all packages installed: `pip list | grep google-adk`
+
+### Web UI Specific Issues
+
+#### Issue: Browser Doesn't Open Automatically
+
+**Error**: `adk web` runs but browser window doesn't appear
+
+**Solution**:
+- Manually open `http://localhost:8000` in your browser
+- Check if a different port was assigned (look at console output)
+- Ensure your default browser is set properly
+
+#### Issue: Web UI Times Out
+
+**Error**: `Connection timeout` when making requests in web UI
+
+**Solution**:
+- Check that all MCP services are still running
+- The first request may take 30-60 seconds
+- Check browser console for error details
+- Restart the `adk web` command if needed
+
+#### Issue: Port 8000 Already in Use
+
+**Error**: `Address already in use` when running `adk web`
+
+**Solution**:
+- Close any other applications using port 8000
+- Or configure a different port via command line:
+  ```bash
+  adk web --port 8001
+  ```
+
+#### Issue: Web UI Shows Blank Chat
+
+**Error**: Chat interface appears but no response to messages
+
+**Solution**:
+- Verify all three MCP services are running
+- Check browser console (F12) for JavaScript errors
+- Check the terminal running `adk web` for server errors
+- Refresh the browser page (Ctrl+R or Cmd+R)
 
 ## Dependencies
 

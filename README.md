@@ -213,8 +213,14 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1  # Windows
 # source venv/bin/activate  # macOS/Linux
 pip install -r requirements.txt
+
+# Option A: Interactive Command-Line Mode
 python trend_agent.py
-# Now interact with the agent!
+# Now interact with the agent in the terminal!
+
+# Option B: Web UI Mode (Recommended for Better UX)
+adk web
+# Opens http://localhost:8000 with a beautiful web interface
 ```
 
 ### 2. Test the System
@@ -231,6 +237,19 @@ python trend_agent.py
 👤 You: quit
 👋 Goodbye!
 ```
+
+### 3. Choosing Your Interface
+
+| Feature | Command-Line | Web UI |
+|---------|--------------|--------|
+| **Speed** | ⚡ Instant | ⚡⚡ Quick loading |
+| **User Experience** | 📝 Text-based | 🎨 Modern UI |
+| **Mobile Access** | ❌ No | ✅ Yes, any browser |
+| **Setup Complexity** | 🟢 Simple | 🟢 Simple |
+| **Chat History** | 📋 Terminal only | 📊 Persistent |
+| **Formatting** | 📄 Plain text | 🎯 Rich formatting |
+| **Accessibility** | 💻 Power users | 👨‍💼 Everyone |
+| **Scripting** | ✅ Easy | ❌ Not recommended |
 
 ## 📖 Developer Guide
 
@@ -756,6 +775,43 @@ flowchart TD
     H -->|Success| I
     H -->|Issues| A
 ```
+
+## ✅ Quick Start Checklist
+
+### Pre-Requisites
+- [ ] Python 3.8+ installed
+- [ ] Google Generative AI API key obtained
+- [ ] Git or folder extraction completed
+
+### MCP Services Setup
+- [ ] TrendScout service running on port 8001
+- [ ] Product Details service running on port 8003
+- [ ] Product Sites service running on port 8002
+- [ ] Each service has `.env` with `GOOGLE_API_KEY`
+
+### Agent Setup
+- [ ] Virtual environment created
+- [ ] Dependencies installed (`pip install -r requirements.txt`)
+- [ ] All three MCP services confirmed running
+- [ ] Agent can connect to all services
+
+### Running the Agent
+- [ ] Choose your interface (Command-Line or Web UI)
+- [ ] For Command-Line: Run `python trend_agent.py`
+- [ ] For Web UI: Run `adk web` (recommended)
+- [ ] Verify agent is responsive to queries
+
+### Testing
+- [ ] Query 1: "What's trending today?"
+- [ ] Query 2: "Where can I buy it?"
+- [ ] Query 3: "Tell me more details about this product"
+- [ ] All responses are comprehensive and accurate
+
+### Success! 🎉
+- [ ] Web UI or CLI working smoothly
+- [ ] MCP services functioning correctly
+- [ ] Agent synthesizing information from all services
+- [ ] Ready to build your own agent system!
 
 ---
 
