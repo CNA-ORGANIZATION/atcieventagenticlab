@@ -1,5 +1,5 @@
 from fastmcp import FastMCP
-import agent.productsites_agent as productsites_agent
+import agent.productdetails_agent as productsites_agent
 
 
 import asyncio
@@ -16,7 +16,7 @@ mcp = FastMCP("TrendScout MCP")
 
 load_dotenv()
 session_service = InMemorySessionService()
-agent: Agent = productsites_agent.deal_agent
+agent: Agent = productsites_agent.analyst_agent
 
 app_name = "product_details_app"
 
